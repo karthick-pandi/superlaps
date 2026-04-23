@@ -1,65 +1,4 @@
-# ShopHub - E-Commerce Application
 
-A full-stack e-commerce platform built with **Node.js/Express** backend and **React** frontend.
-
-## 📋 Table of Contents
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Running the Project](#running-the-project)
-- [API Documentation](#api-documentation)
-- [Project Structure](#project-structure)
-- [Environment Variables](#environment-variables)
-- [Deployment](#deployment)
-
----
-
-## ✨ Features
-
-### User Features
-- 🔍 Search products by name
-- 📄 View product details with reviews and ratings
-- 📦 Check product availability and stock status
-- ⭐ View product reviews and ratings
-
-### Admin Features
-- ➕ Create new products
-- ✏️ Edit existing products
-- 🗑️ Delete products
-- 📊 Manage product inventory
-- 📈 View all products in dashboard
-
----
-
-## 🛠 Tech Stack
-
-### Backend
-- **Node.js** - Runtime environment
-- **Express.js** - Web framework
-- **PostgreSQL** - Database
-- **Swagger** - API documentation
-- **CORS** - Cross-origin resource sharing
-- **dotenv** - Environment variables
-
-### Frontend
-- **React** - UI library
-- **React Router** - Routing
-- **Axios** - HTTP client
-- **CSS3** - Styling
-
----
-
-## 📦 Prerequisites
-
-Before you begin, ensure you have the following installed:
-- **Node.js** (v14 or higher) - [Download](https://nodejs.org/)
-- **PostgreSQL** (v12 or higher) - [Download](https://www.postgresql.org/)
-- **Git** - [Download](https://git-scm.com/)
-
----
-
-## 🚀 Installation
 
 ### 1. Clone the Repository
 ```bash
@@ -426,20 +365,126 @@ http://localhost:5000/api/docs
 
 ---
 
-## 📤 Deployment
+## 🌐 Deployment
 
-### Backend Deployment (Railway.app)
-1. Push code to GitHub
-2. Sign up at https://railway.app
-3. Deploy from GitHub repo
-4. Add PostgreSQL service
-5. Set environment variables
-6. Deploy
+### Quick Deploy (Recommended)
 
-### Frontend Deployment (Vercel)
-1. Sign up at https://vercel.com
-2. Connect GitHub repo
-3. Deploy
+Run the deployment script:
+```bash
+deploy.bat
+```
+
+This will show you step-by-step instructions for both backend and frontend deployment.
+
+### Backend Deployment (Railway.app - Free)
+
+1. **Sign up at Railway**: https://railway.app
+2. **Deploy from GitHub**:
+   - Click "New Project" → "Deploy from GitHub"
+   - Select your repository
+   - Railway will auto-detect Node.js
+3. **Add PostgreSQL Database**:
+   - Click "Add Service" → "PostgreSQL"
+   - Railway will create and connect automatically
+4. **Set Environment Variables**:
+   ```
+   PORT=5000
+   DB_HOST=[auto-filled by Railway]
+   DB_USER=[auto-filled by Railway]
+   DB_PASSWORD=[auto-filled by Railway]
+   DB_NAME=[auto-filled by Railway]
+   DB_PORT=[auto-filled by Railway]
+   ```
+5. **Initialize Database**:
+   - Go to Railway dashboard → your backend service
+   - Open "Variables" tab → add `INIT_DB=true`
+   - Or run `node src/init.js` in the Railway console
+
+**Backend URL**: `https://your-project-name.up.railway.app`
+
+### Frontend Deployment (Vercel - Free)
+
+1. **Sign up at Vercel**: https://vercel.com
+2. **Deploy from GitHub**:
+   - Click "New Project"
+   - Import your GitHub repository
+   - Configure settings:
+     - **Framework Preset**: Create React App
+     - **Root Directory**: `frontend`
+     - **Build Command**: `npm run build`
+     - **Output Directory**: `build`
+3. **Add Environment Variable**:
+   ```
+   REACT_APP_API_URL=https://your-backend-url.up.railway.app/api
+   ```
+
+**Frontend URL**: `https://your-project-name.vercel.app`
+
+### Manual Deployment
+
+#### Backend (Railway)
+```bash
+# Files to deploy: backend/ folder (except node_modules/)
+# Railway will auto-deploy from GitHub
+```
+
+#### Frontend (Vercel)
+```bash
+# Files to deploy: frontend/ folder (except node_modules/)
+# Vercel will auto-deploy from GitHub
+```
+
+### Environment Variables Summary
+
+**Backend (.env):**
+```env
+PORT=5000
+DB_HOST=containers-us-west-1.railway.app
+DB_USER=postgres
+DB_PASSWORD=your_password
+DB_NAME=railway
+DB_PORT=5432
+```
+
+**Frontend (.env):**
+```env
+REACT_APP_API_URL=https://your-backend.up.railway.app/api
+```
+
+### Testing Deployment
+
+1. **Backend Health Check**:
+   ```
+   GET https://your-backend.up.railway.app/api/products
+   ```
+
+2. **Frontend Access**:
+   ```
+   https://your-frontend.vercel.app
+   ```
+
+3. **API Documentation**:
+   ```
+   https://your-backend.up.railway.app/api/docs
+   ```
+
+---
+
+## 🚀 Quick Start Commands
+
+### Local Development
+```bash
+# Backend
+cd backend && npm install && npm start
+
+# Frontend (new terminal)
+cd frontend && npm install && npm start
+```
+
+### Production URLs
+- **Frontend**: https://your-project.vercel.app
+- **Backend API**: https://your-project.up.railway.app/api
+- **API Docs**: https://your-project.up.railway.app/api/docs
 
 ---
 
